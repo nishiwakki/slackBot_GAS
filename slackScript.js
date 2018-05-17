@@ -37,21 +37,7 @@ function IsNowTimeCheck(){
   var holdAgenda = sheet.getSheetValues(lastRow,9,1,1);
   var holdNotes = sheet.getSheetValues(lastRow,10,1,1);
 
-  var message = postSlackMessage(
-  "<!channel>" + "\n" +
-  "第" + holdNumber + "回 KOUSA会議 のお知らせです。" + "\n" +
-  "＜日付＞" + "\n" +
-  holdYear + "/" + holdMonth + "/" + holdDay + "（" + holdAdotw + "）\n" +
-  "＜開始時間＞" + "\n" +
-  holdHour + ":" + holdMinute + "\n" +
-  "＜場所＞" + "\n" +
-  holdPlace + "\n" +
-  "＜アジェンダ＞" + "\n" +
-  holdAgenda + "\n" +
-  "＜注意事項＞" + "\n" +
-  holdNotes + "\n" +
-  "--------------------------------------------------" + "\n"
-  );
+  var message = postSlackMessage("送りたいメッセージ");
 
 }
 
@@ -62,9 +48,9 @@ function postSlackMessage(content) {
 
   var options = {
     channelId: "#general",
-    userName: "kousabot",
+    userName: "botの名前",
     message: content,
-    icon_Url: "https://2.bp.blogspot.com/-ZwYKR5Zu28s/U6Qo2qAjsqI/AAAAAAAAhkM/HkbDZEJwvPs/s800/omocha_robot.png"
+    icon_Url: "スプレッドシートのURL"
   };
 
   slackApp.postMessage(options.channelId, options.message, {username: options.userName, icon_url: options.icon_Url});
